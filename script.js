@@ -4,6 +4,9 @@ ctx.font = "60px serif";
 
 ctx.fillStyle="green";
 
+
+
+
 //fons
 
 ctx.beginPath();
