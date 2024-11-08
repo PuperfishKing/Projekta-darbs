@@ -80,6 +80,17 @@ function change(){
     
 }
 
+let preSetCarDAta={
+    vwGolf:{
+        witdh:2471,
+        length:4071,
+        mass:1009,
+        power:55,
+        pointOfMassX:0,
+        pointOfMassY:0,
+    }
+}
+
 let carData={
     witdh:0,
     length:0,
@@ -105,7 +116,8 @@ let startPoint={
     }
 }
 let endPoint ={
-    
+    x: 700,
+    y: 30
 }
 
 
