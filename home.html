@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang = "lv">
     <head>
         <title>Projekts</title>
         <link rel="stylesheet" href="style.css">
@@ -17,7 +17,20 @@
             <option value="fordFiesta">Ford Fiesta</option>
 
         </select>
-        <div id="inputData" display="none">
+        <hr>
+        <div id="inputDataPlace" >
+            Masinas nosakums: <input type="text" id="nameChoise"> <br>
+            Mašīnas svars (kg): <input type="number" id="carMassInput" min="0.0" value="0"><br>
+            Mašīnas garums(m): <input type="number" id="carLengthInput" min="0.0" value="0"><br>
+            Mašīnas platums(m): <input type="number" id="carWitdhInput" min="0.0" value="0"><br>
+            Mašīnas dzinēja spēks(kw): <input type="number" id="carWitdhInput" min="0.0" value="0"><br>
+            <br>
+            Vai Jūs zināt informāciju par dzinēja svaru un izvietojumu?<br>
+            <input type="checkbox" id="knowsEngineInfo" onchange="checkForEngineInfo()" checked="False"> <br>
+            <div id="engineInfo">
+                strada
+                <hr>
+            </div>
 
         </div>
 

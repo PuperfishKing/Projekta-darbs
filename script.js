@@ -1,13 +1,17 @@
 const lauks = document.getElementById("lauks");
 const ctx = lauks.getContext("2d");
+
 let inputData = document.getElementById("inputData")
+let knowsEngineInfo = document.getElementById("knowsEngineInfo")
+
+
 ctx.font = "60px serif";
 
 ctx.fillStyle="green";
 
 
-let track_witdh=10000 //mlilimetri
-let proportion = 2.5 // 1 pix ir 2,5 mm , 10000/400
+let track_witdh=10 //metri
+let proportion = 0.0025 // 1 pix ir 0,0025 m , 10000/400
 
 
 function drawTrack(){
@@ -76,18 +80,15 @@ function drawTrack(){
     ctx.arc(200, 200, 20, 2.35,  1.5* Math.PI);
     ctx.stroke();
 }
-function change(){
-    
-}
 
-let preSetCarDAta={
-    vwGolf:{
-        witdh:2471,
-        length:4071,
-        mass:1009,
-        power:55,
-        pointOfMassX:0,
-        pointOfMassY:0,
+class carDataTemplate {
+    constructor(witdh,length,mass,power, centerOfMassX,centerOfMassY){
+        this.witdh = witdh;
+        this.length = length;
+        this.mass = mass;
+        this.power = power;
+        this.centerOfMassX = centerOfMassX;
+        this.centerOfMassY = centerOfMassY;
     }
 }
 
@@ -96,9 +97,8 @@ let carData={
     length:0,
     mass:0,
     power:0,
-    pointOfMassX:0,
-    pointOfMassY:0,
-
+    centerOfMassX:0,
+    centerOfMassY:0,
 }
 
 let startPoint={
@@ -118,6 +118,29 @@ let startPoint={
 let endPoint ={
     x: 700,
     y: 30
+}
+
+
+
+
+
+function change(){
+    
+}
+
+function checkForEngineInfo(){
+    //console.log(document.getElementById("knowsEngineInfo").style.display.valueOf())
+    if(knowsEngineInfo){
+        document.getElementById("engineInfo").style.display='blocked';
+    }
+    else{
+        //document.getElementById("engineInfo").setAttribute("hidden", "hidden");
+        
+    }
+}
+
+let preSetCarDAta={
+    vwGolf : new carDataTemplate(2.471 ,4.071 ,1009 ,55 ,0 ,0),
 }
 
 
