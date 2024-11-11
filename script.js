@@ -1,8 +1,12 @@
 const lauks = document.getElementById("lauks");
 const ctx = lauks.getContext("2d");
 
-let inputData = document.getElementById("inputData")
-let knowsEngineInfo = document.getElementById("knowsEngineInfo")
+const inputData = document.getElementById("inputData")
+/**@type {HTMLInputElement} */
+const knowsEngineInfo = document.getElementById("knowsEngineInfo")
+const engineInfo = document.getElementById("engineInfo")
+
+
 
 
 ctx.font = "60px serif";
@@ -122,30 +126,27 @@ let endPoint ={
 
 
 
-
-
 function change(){
-    
+    console.log("Izvelejas", document.getElementById("carDataChoise").checked)
 }
-
 function checkForEngineInfo(){
-    //console.log(document.getElementById("knowsEngineInfo").style.display.valueOf())
-    if(knowsEngineInfo){
-        document.getElementById("engineInfo").style.display='blocked';
+    
+    if ( knowsEngineInfo.checked ) {
+        engineInfo.style.display="block"
+    } else {
+        engineInfo.style.display="none"
     }
-    else{
-        //document.getElementById("engineInfo").setAttribute("hidden", "hidden");
-        
-    }
+    // if(document.getElementById("knowsEngineInfo").style.display = "none"){
+    //     //document.getElementById("engineInfo").style.display='blocked';
+    // }
+    // else{
+    //     document.getElementById("knowsEngineInfo").style.display = "none"
+    // }
 }
 
 let preSetCarDAta={
     vwGolf : new carDataTemplate(2.471 ,4.071 ,1009 ,55 ,0 ,0),
 }
 
-
-
-
-
-drawTrack();
+    drawTrack();
 //Pati programma
