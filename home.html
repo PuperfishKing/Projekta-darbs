@@ -13,7 +13,7 @@
         <select onchange="change()" id="carDataChoise" form="carChoise">
             <option value="custom">Custom</option>
             <option value="golfGen3">3. gen VW golf</option>
-            <option value="fordFiesta">Ford Fiesta</option>
+            <option value="fordFiesta">7. gen Ford Fiesta</option>
             
         </select>
         <hr>
@@ -22,7 +22,11 @@
             Mašīnas svars (kg): <input type="number" id="carMassInput" min="0.0" value="0"><br>
             Mašīnas garums(m): <input type="number" id="carLengthInput" min="0.0" value="0"><br>
             Mašīnas platums(m): <input type="number" id="carWitdhInput" min="0.0" value="0"><br>
-            Mašīnas dzinēja spēks(kw): <input type="number" id="carWitdhInput" min="0.0" value="0"><br>
+            Mašīnas dzinēja spēks(kw): <input type="number" id="carWitdhInput" min="0.0" value="0">
+            <select onchange="checkEngineMesurment()" id="engineMesurment">
+                <option value="kw">kw</option>
+                <option value="hp">hp</option>
+            </select>
             <br>
             Vai Jūs zināt informāciju par dzinēja svaru un izvietojumu?<br>
             <label>
@@ -30,7 +34,10 @@
             </label>
             <hr>    
             <div id="engineInfo" style="display: none;">
-                strada
+                <label>Dzinēja masa(kg):
+                    <input type="number" min="0" value="0">
+                </label>
+                <br>
             </div>
         
         <script src="script.js"></script>
