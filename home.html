@@ -7,41 +7,70 @@
     <body>
         <canvas id="lauks" width="800" height="700"></canvas>
         <br>
-        <button function="zimeTrasi()">Pārzīmē trasi</button>
-        <hr>
-        <label for="dataChoise" id="carChoiseList" >Mašīnas dati:</label>
-        <select onchange="change()" id="carDataChoise" form="carChoise">
-            <option value="custom">Custom</option>
-            <option value="golfGen3">3. gen VW golf</option>
-            <option value="fordFiesta">7. gen Ford Fiesta</option>
-            
+        <button function="zimeTrasi()">Pārzīmē trasi</button><br>
+        Ko vēlies darīt? 
+        <select onchange="changeThingToDo()">
+            <option value="choseCar">Izvēlēties mašīnu</option>
+            <option value="inputData">ievadīt braukšanas datus</option>
         </select>
         <hr>
-        <div id="inputDataPlace" >
-            Masinas nosakums: <input type="text" id="nameChoise"> <br>
-            Mašīnas svars (kg): <input type="number" id="carMassInput" min="0.0" value="0"><br>
-            Mašīnas garums(m): <input type="number" id="carLengthInput" min="0.0" value="0"><br>
-            Mašīnas platums(m): <input type="number" id="carWitdhInput" min="0.0" value="0"><br>
-            Mašīnas dzinēja spēks(kw): <input type="number" id="carWitdhInput" min="0.0" value="0">
-            <select onchange="checkEngineMesurment()" id="engineMesurment">
-                <option value="kw">kw</option>
-                <option value="hp">hp</option>
+        <div id="chosenThingToDo">
+            <label for="dataChoise" id="carChoiseList" >Mašīnas dati:</label>
+            <select onchange="change()" id="carDataChoise" form="carChoise">
+                <option value="custom">Custom</option>
+                <option value="vwGolf3">3. gen VW golf</option>
+                <option value="fordFiesta">7. gen Ford Fiesta</option>
+                
             </select>
-            <br>
-            Vai Jūs zināt informāciju par dzinēja svaru un izvietojumu?<br>
-            <label>
-                <input type="checkbox" name="idfc" id="knowsEngineInfo" onchange="checkForEngineInfo()" unchecked> <br>
-            </label>
-            <hr>    
-            <div id="engineInfo" style="display: none;">
-                <label>Dzinēja masa(kg):
-                    <input type="number" min="0" value="0">
-                </label>
+            <hr>
+            <div id="knownCarData" style="display: none;">
+                Mašīnas svars(kg): <i id="knownCarMass"> </i><br>
+                Mašīnas garums(m): <i id="knownCarLenght"> </i><br>
+                Mašīnas platums(m): <i id="knownCarWitdh"> </i><br>
+                Mašīnas dzinēja spēks(
+                    <select onchange="changeKnownEngMesurmantes()" id="knownEngValueChoise">
+                        <option value="kw">kw</option>
+                        <option value="hp">hp</option>
+                        </select>
+                ): <i id="knownCarPower"> </i>
+            </div>
+            <div id="inputDataPlace" >
+                Masinas nosakums: <input type="text" id="nameChoise"> <br>
+                Mašīnas svars (kg): <input type="number" id="carMassInput" min="0.0" value=""><br>
+                Mašīnas garums(m): <input type="number" id="carLengthInput" min="0.0" value=""><br>
+                Mašīnas platums(m): <input type="number" id="carWitdhInput" min="0.0" value=""><br>
+                Mašīnas dzinēja spēks(
+                    <select onchange="checkEngineMesurment()" id="engineMesurmentChoise">
+                    <option value="kw">kw</option>
+                    <option value="hp">hp</option>
+                    </select>
+                ): <input type="number" id="carPowerInput" min="0.0" value="">
                 <br>
+                Vai Jūs zināt informāciju par dzinēja svaru un izvietojumu?(opcionāls) 
+                <label>
+                    <input type="checkbox" name="idfc" id="knowsEngineInfo" onchange="checkForEngineInfo()" unchecked> <br>
+                </label>
+                Vai Jūs zināt mašīnas samguma centru?(opcionāls) 
+                <label>
+                    <input type="checkbox" name="idfc" id="knowsCenterOfMass" onchange="checkForCenterOfMass()" unchecked> <br>
+                </label>
+                
+                <div id="engineInfo" style="display: blocked;">
+                    <label>Dzinēja masa(kg):
+                        <input type="number" min="0" value="0">
+                    </label>
+                    <br>
+                </div>
             </div>
         
-        <script src="script.js"></script>
+        
         </div>
 
+        <script type="text/javascript" src="js/const.js"></script>
+        <script type="text/javascript" src="js/carDataFunction.js"></script>
+        <script type="text/javascript" src="js/drivingDataAndFunctions.js"></script>
+        <script type="text/javascript" src="js/map.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        
     </body>
 </html>
