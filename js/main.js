@@ -63,7 +63,7 @@ function calculateCenterOfMass(carChoise){
     curentCar.centerOfMassY = (curentCar.centerOfMassX).toFixed(3)
 }
 
-let preSetCarDAta={
+var preSetCarDAta={
     vwGolf3 : new carDataTemplate(2.471 ,4.071 ,1009 ,110 ,0 ,0,0),
     fordFiesta: new carDataTemplate(1.735,4.069,1200,74,0, 0, 0)
 }

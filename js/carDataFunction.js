@@ -26,6 +26,11 @@ function changeKnownEngMesurmantes(){
     knownCarPower.innerHTML = changeEngValues("kw",knownEngValueChoise.value, preSetCarDAta[carDataChoise.value].power)
 }
 
+function save(){
+    preSetCarDAta[ nameChoise.value ] = new carDataTemplate()
+    // preSetCarDAta.push(nameChoise.value : new carDataTemplate() )
+}
+
 function checkForEngineInfo(){
     
     if ( knowsEngineInfo.checked ) {

@@ -1,12 +1,16 @@
 const lauks = document.getElementById("lauks");
 const ctx = lauks.getContext("2d");
 
+
+
 const inputData = document.getElementById("inputData")
 const knowsEngineInfo = document.getElementById("knowsEngineInfo")
 const engineInfo = document.getElementById("engineInfo")
 const carDataPlace = document.getElementById("inputDataPlace")
 const carDataChoise = document.getElementById("carDataChoise")
 
+const chosenActIsCar = document.getElementById("chosingTheCar")
+const choiseToChangeAction = document.getElementById("choiseToChangeAction")
 
 const knownCarData = document.getElementById("knownCarData")
 const knownCarMass=document.getElementById("knownCarMass")

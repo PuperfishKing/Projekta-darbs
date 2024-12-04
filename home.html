@@ -9,12 +9,12 @@
         <br>
         <button function="zimeTrasi()">Pārzīmē trasi</button><br>
         Ko vēlies darīt? 
-        <select onchange="changeThingToDo()">
+        <select onchange="changeThingToDo()" id="choiseToChangeAction">
             <option value="choseCar">Izvēlēties mašīnu</option>
-            <option value="inputData">ievadīt braukšanas datus</option>
+            <option value="inputDrivingData">ievadīt braukšanas datus</option>
         </select>
         <hr>
-        <div id="chosenThingToDo">
+        <div id="chosingTheCar">
             <label for="dataChoise" id="carChoiseList" >Mašīnas dati:</label>
             <select onchange="change()" id="carDataChoise" form="carChoise">
                 <option value="custom">Custom</option>
@@ -46,6 +46,8 @@
                     </select>
                 ): <input type="number" id="carPowerInput" min="0.0" value="">
                 <br>
+                <button onclick="save()" id="saveButt">Saglabāt</button>
+                <br>
                 Vai Jūs zināt informāciju par dzinēja svaru un izvietojumu?(opcionāls) 
                 <label>
                     <input type="checkbox" name="idfc" id="knowsEngineInfo" onchange="checkForEngineInfo()" unchecked> <br>
@@ -65,12 +67,15 @@
         
         
         </div>
+        <div id="drivingDataEntry">
+
+        </div>
 
         <script type="text/javascript" src="js/const.js"></script>
         <script type="text/javascript" src="js/carDataFunction.js"></script>
         <script type="text/javascript" src="js/drivingDataAndFunctions.js"></script>
         <script type="text/javascript" src="js/map.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/main.js" defer></script>
         
     </body>
 </html>
