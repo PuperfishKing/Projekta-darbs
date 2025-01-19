@@ -1,10 +1,21 @@
 function drawTrack(){
+    ctx.fillStyle="green"
     ctx.beginPath();
     ctx.fillRect(0, 0, 800, 700);
     ctx.stroke();
-    ctx.fillStyle="gray";
+    
+    //zīmē smiltis
+
+    ctx.fillStyle = "#fdee76";
+    ctx.beginPath();
+
+    ctx.fillRect(0,0,800,150);
+    ctx.fill();
+
+
     //ceļa līnija
     //līkums sākums
+    ctx.fillStyle="gray";
     ctx.beginPath();
     ctx.moveTo(0, 219);
     ctx.lineTo(300, 700);
@@ -53,7 +64,7 @@ function drawTrack(){
     ctx.moveTo(200, 20);
     ctx.lineTo(800, 100);
     ctx.lineTo(800, 270);
-    ctx.lineTo(200, 180)
+    ctx.lineTo(200, 180);
     ctx.fill();
     //ceļa līniju vidus
     //pagrieziena vidus
@@ -63,4 +74,7 @@ function drawTrack(){
     ctx.beginPath();
     ctx.arc(200, 200, 20, 2.35,  1.5* Math.PI);
     ctx.stroke();
+
+
+
 }
