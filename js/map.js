@@ -1,4 +1,5 @@
 function drawTrack(){
+    ctx.strokeStyle="Black"
     ctx.fillStyle="green"
     ctx.beginPath();
     ctx.fillRect(0, 0, 800, 700);

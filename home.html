@@ -7,7 +7,7 @@
     <body>
         <canvas id="lauks" width="800" height="700"></canvas>
         <br>
-        <button function="zimeTrasi()">Pārzīmē trasi</button><br>
+        <button onclick="drawTrack()">Pārzīmē trasi</button><br>
         Ko vēlies darīt? 
         <select onchange="changeThingToDo()" onclick="changeThingToDo()" id="choiseToChangeAction" value="choseCar">
             <option value="choseCar">Izvēlēties mašīnu</option>
@@ -37,7 +37,8 @@
                         <option value="hp">hp</option>
                         </select>
                 ): <i id="knownCarPower"> </i><br>
-                Mašīnas piedziņa: <i id="knownCarPowerOutput"></i>
+                Mašīnas piedziņa: <i id="knownCarPowerOutput"></i><br>
+                Degvielas veids: <i id="knownCarFuelType"></i>
             </div>
 
 
@@ -53,6 +54,14 @@
                     </select>
                 ): <input type="number" id="carPowerInput" min="0.0" value="">
                 <br>
+                Kādi bremžu diski ir Jūsu mašīnai? 
+                <select id="brakeOption">
+                    <option value=0.25>Slikti bremžu diski</option>
+                    <option value=0.35>Vidēji brežu diski</option>
+                    <option value=0.5>Labi bremžu diski</option>
+                    <option value=0.6 >Labākie bremžu diski tirgū</option>
+                </select>
+                <br>
                 Mašīnas piedziņa: 
                     <select id="customCarPowerOutput">
                         <option value="AWD">AWD</option>
@@ -60,24 +69,17 @@
                         <option value="RWD">RWD</option>
                     </select>
                 <br>
+                Degvielas tips:
+                    <select id="customFuelType">
+                        <option value="Dīzelis">Dīzeļdegviela</option>
+                        <option value="Bendzīns">Bendzīns</option>
+                        <option value="Bendzīns/dabas gāze">Bendzīns/dabas Gāze</option>
+                        <option value="Electrība">Elektrība</option>
+                    </section>
+                <br>
                 <button onclick="save()" id="saveButt">Saglabāt</button>
                 <br>
-                Vai Jūs zināt informāciju par dzinēja svaru un izvietojumu?(opcionāls) 
-                <label>
-                    <input type="checkbox" name="idfc" id="knowsEngineInfo" onchange="checkForEngineInfo()" unchecked> <br>
-                </label>
-                Vai Jūs zināt mašīnas smaguma centru?(opcionāls) 
-                <label>
-                    <input type="checkbox" name="idfc" id="knowsCenterOfMass" onchange="checkForCenterOfMass()" unchecked> <br>
-                </label>
-                
 
-                <div id="engineInfo" style="display: blocked;">
-                    <label>Dzinēja masa(kg):
-                        <input type="number" min="0" value="0">
-                    </label>
-                    <br>
-                </div>
             </div>
         
  
@@ -94,11 +96,20 @@
             <br>
             Vai ārā ir/bija lijis?
             <select id="lietusJautajums">
-                <option value="0">Nē</option>
-                <option value="0.5">Viegli</option>
-                <option value="1">Smagi</option>
+                <option value=1>Nē</option>
+                <option value=0.85>Viegli</option>
+                <option value=0.7>Smagi</option>
             </select>
             <br>
+            Kādas riepas jums ir?
+            <select id="riepas">
+                <option value=0.8> Parastas</option>
+                <option value =1>Sporta</option>
+                <option value="1.5">Formulas</option>
+                <option value=4> Dragreisa</option>
+            </select><hr>
+            <button onclick="calculateOptimalSpeed()"> Zīmēt trajektoriju</button>
+
 
         </div>
 

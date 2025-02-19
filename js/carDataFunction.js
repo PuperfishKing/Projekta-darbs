@@ -12,6 +12,7 @@ function change(){
         knownCarPower.innerHTML = changeEngValues("kw",knownEngValueChoise.value, preSetCarDAta[carDataChoise.value].power)
         knownCarWitdh.innerHTML = preSetCarDAta[carDataChoise.value].witdh
         knownCarPowerOutput.innerHTML = preSetCarDAta[carDataChoise.value].powerOutput
+        knownCarFuelType.innerHTML=preSetCarDAta[carDataChoise.value].fuelType
         //console.log(preSetCarDAta[carDataChoise.value].power)
     }
 }
@@ -40,7 +41,7 @@ function save(){
         }
     }
     if(!aiznemts){
-        preSetCarDAta[ nameChoise.value ] = new carDataTemplate(nameChoise.value ,carWitdhInput.value,carLengthInput.value,carMassInput.value,changeEngValues(engineMesurmentChoise.value,"kw",carPowerInput.value),customCarPowerOutput.value )
+        preSetCarDAta[ nameChoise.value ] = new carDataTemplate(nameChoise.value ,carWitdhInput.value,carLengthInput.value,carMassInput.value,changeEngValues(engineMesurmentChoise.value,"kw",carPowerInput.value),customCarPowerOutput.value,knownCarFuelType.value )
         let newOption = document.createElement('option')
         newOption.value = nameChoise.value
         newOption.text =nameChoise.value 
@@ -52,14 +53,7 @@ function save(){
     // preSetCarDAta.push(nameChoise.value : new carDataTemplate() )
 }
 
-function checkForEngineInfo(){
-    
-    if ( knowsEngineInfo.checked ) {
-        engineInfo.style.display="block"
-    } else {
-        engineInfo.style.display="none"
-    }
-}
+
 
 function  updateCenterOfMassDrawing(){
     

@@ -54,5 +54,5 @@ function calculateCenterOfMass(carChoise){
 
 drawTrack();
 change()
-checkForEngineInfo()
+
 //Pati programma
