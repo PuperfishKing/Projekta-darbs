@@ -11,8 +11,8 @@ const carDataChoise = document.getElementById("carDataChoise")
 const knownCarPowerOutput = document.getElementById("knownCarPowerOutput")
 const knownCarFuelType = document.getElementById("knownCarFuelType")
 
-const chosenActIsCar = document.getElementById("chosingTheCar")
-const chosenActIsToInputDrivingData = document.getElementById("drivingDataEntry")
+const chosingTheCar = document.getElementById("chosingTheCar")
+const drivingDataEntry = document.getElementById("drivingDataEntry")
 const choiseToChangeAction = document.getElementById("choiseToChangeAction")
 
 const knownCarData = document.getElementById("knownCarData")

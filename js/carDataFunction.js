@@ -1,11 +1,11 @@
 function change(){
     if (carDataChoise.value == "custom"){
         carDataPlace.style.display="block"
-        knownCarData.style.display="none"
+        chosingTheCar.style.display="none"
     }
     else {
         carDataPlace.style.display="none"
-        knownCarData.style.display="block"
+        chosingTheCar.style.display="block"
 
         knownCarLenght.innerHTML = preSetCarDAta[carDataChoise.value].length
         knownCarMass.innerHTML = preSetCarDAta[carDataChoise.value].mass

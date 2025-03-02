@@ -1,11 +1,11 @@
 function changeThingToDo(){
     if(choiseToChangeAction.value=="choseCar")  {
-        chosenActIsCar.style.display="block"
-        chosenActIsToInputDrivingData.style.display="none"
+        chosingTheCar.style.display="block"
+        drivingDataEntry.style.display="none"
     }
     else if (choiseToChangeAction.value == "inputDrivingData")  {
-        chosenActIsToInputDrivingData.style.display="block"
-        chosenActIsCar.style.display="none"
+        drivingDataEntry.style.display="block"
+        chosingTheCar.style.display="none"
     }
 }
 function changeSpeed(to,from,value){
