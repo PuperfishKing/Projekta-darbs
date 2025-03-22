@@ -14,17 +14,6 @@ function changeSpeed(to,from,value){
     else return value
 }
 
-
-
-function drawCarPosision(){
-    drawTrack()
-    //console.log("Strada drawCarPosision() ", rangeBar.value)
-    ctx.fillStyle="red"
-    ctx.beginPath()
-    ctx.arc((300+190*(rangeBar.value/100)),695,5  ,0,2*Math.PI) //zime iebraukšanas punktu
-    ctx.fill()
-}
-
 function getAcceliration(from){
     
 }
@@ -44,14 +33,13 @@ function calculateAcceleration(startSpeed, mass, power){
 
 function drawDrivingLine(){
     drawCarPosision()
-    ctx.lineWidth=5
     if(currentSpeed <(optimalSpeed*0.85)){
         ctx.strokeStyle="lime"
         ctx.beginPath()
         ctx.moveTo((300+190*(rangeBar.value/100)),700)
         ctx.lineTo(150,150)
         ctx.stroke();
-        console.log("zīmē no ",(300+190*(rangeBar.value/100)),695, " uz ",150,150)
+        console.log("zīmē no ",(300+190*(rangeBar.value/100)),695, " uz ",150)
     }
     if(currentSpeed > (optimalSpeed*1.15)){
         ctx.strokeStyle="red"
@@ -60,9 +48,21 @@ function drawDrivingLine(){
         ctx.moveTo((300+190*(rangeBar.value/100)),700)
         ctx.lineTo(150,150)
         ctx.stroke();
-        console.log("zīmē no ",(300+190*(rangeBar.value/100)),695, " uz ",150,150)
+        console.log("zīmē no ",(300+190*(rangeBar.value/100)),695, " uz ",150)
     }
+    ctx.beginPath();
+    ctx.moveTo(135,435);
+    ctx.quadraticCurveTo(testX, testY, 800,100);
+    ctx.stroke();
+
 
     //dzeltena krāsa
+
+}
+function drawTest(){
+    ctx.beginPath();
+    ctx.moveTo(135,435);
+    ctx.quadraticCurveTo(testX, testY, 800,100);
+    ctx.stroke();
 
 }

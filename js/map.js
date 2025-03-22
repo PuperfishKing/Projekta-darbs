@@ -1,4 +1,6 @@
 function drawTrack(){
+    ctx.lineWidth=4
+
     ctx.strokeStyle="Black"
     ctx.fillStyle="green"
     ctx.beginPath();
@@ -75,7 +77,44 @@ function drawTrack(){
     ctx.beginPath();
     ctx.arc(200, 200, 20, 2.35,  1.5* Math.PI);
     ctx.stroke();
+}
+
+function drawCarPosision(){
+    drawTrack()
+    //console.log("Strada drawCarPosision() ", rangeBar.value)
+    ctx.fillStyle="red"
+    ctx.beginPath()
+    ctx.arc((300+190*(rangeBar.value/100)),695,5  ,0,2*Math.PI) //zime iebraukšanas punktu
+    ctx.fill()
+}
+
+function drawDrivingLine(){
+    drawCarPosision()
+    
+    if(currentSpeed <(optimalSpeed*0.85)){
+        ctx.strokeStyle="lime"
+        ctx.beginPath()
+        ctx.moveTo((300+190*(rangeBar.value/100)),700)
+        ctx.lineTo(135,435)
+        ctx.stroke();
+        console.log("zīmē no ",(300+190*(rangeBar.value/100)),695, " uz ",150,150)
+    }
+    if(currentSpeed > (optimalSpeed*1.15)){
+        ctx.strokeStyle="red"
+        console.log("Nestrada")
+        ctx.beginPath()
+        ctx.moveTo((300+190*(rangeBar.value/100)),700)
+        ctx.lineTo(131,435)
+        ctx.stroke();
+        console.log("zīmē no ",(300+190*(rangeBar.value/100)),695, " uz ",150,150)
+    }
+
+    ctx.beginPath();
+    ctx.moveTo((300+190*(rangeBar.value/100)),695);
+    ctx.quadraticCurveTo(testX, testY, 800,100);
+    ctx.stroke();
 
 
+    //dzeltena krāsa
 
 }
