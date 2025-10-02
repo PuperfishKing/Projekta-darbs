@@ -13,18 +13,25 @@
             <option value="choseCar">Izvēlēties mašīnu</option>
             <option value="inputDrivingData">Ievadīt braukšanas datus</option>
         </select>
+            <a id="chosenCarName"  style="display: block;"></a>
         <hr>
 
 
 
         <div id="drivingDataEntry" style="display: block;">
-            Kur Jūs uzsākat līkumu?<br>
+            Kur Jūs uzsākat līkumu? <br>
             <input type="range" id="rangeBar" max="100" min="0" ondrag="drawCarPosision()" onchange=" drawCarPosision()" onclick="drawCarPosision()" class="slider"> <br>
             <br>
             Kāds ir līkuma iebraukšanas ātrums? <input id="startSpeed" type="number" min="0"> 
             <select id="atrumaMerv"> 
-                <option value="km/h">km/h</option>
                 <option value="m/s">m/s</option>
+                <option value="km/h">km/h</option>
+            </select>
+            <br>
+            Kāds ir Jūsu riepu spiediens? <input id="tirePressure" type="number"min=0>
+             <select id="tirePressureMesurment"> 
+                <option value="bar">bar/atmosfēras</option> <!--same as bar-->
+                <option value="psi">psi</option> <!-- psi=> bar  /14.504-->
             </select>
             <br>
             Vai ārā ir/bija lijis?
@@ -38,10 +45,10 @@
             <select id="riepas">
                 <option value=0.8> Parastas</option>
                 <option value =1>Sporta</option>
-                <option value="1.5">Formulas</option>
+                <option value=1.5>Formulas</option>
                 <option value=4> Dragreisa</option>
             </select><hr>
-            <button onclick="calculateOptimalSpeed()"> Zīmēt trajektoriju</button>
+            <button onclick="drawDrivingLine()"> Zīmēt trajektoriju</button>
 
 
         </div>
@@ -51,9 +58,7 @@
         <div id="chosingTheCar" >
             <label for="dataChoise" id="carChoiseList" >Mašīnas dati:</label>
             <select onchange="change()" id="carDataChoise" form="carChoise">
-                <option value="custom">Custom</option>
-                <option value="vwGolf3">3. gen VW golf</option>
-                <option value="fordFiesta">7. gen Ford Fiesta</option>
+            
                 
             </select>
             <hr>
@@ -69,13 +74,13 @@
                         <option value="hp">hp</option>
                         </select>
                 ): <i id="knownCarPower"> </i><br>
-                Mašīnas piedziņa: <i id="knownCarPowerOutput"></i><br>
-                Degvielas veids: <i id="knownCarFuelType"></i>
+                <button  onclick="deleteCarData()">Izdzēst šīs mašīnas datus</button><br>
+                <button id="selectCar" onclick="chooseThisCar()">Izvēlēties šo auto</button><br>
+                
             </div>
-x
     
 
-            <div id="carInputDataPlace" >
+            <div id="carInputDataPlace" style="display: none;">
                 Masinas nosakums: <input type="text" id="nameChoise"> <br>
                 Mašīnas svars (kg): <input type="number" id="carMassInput" min="0.0" value=""><br>
                 Mašīnas garums(m): <input onchange="updateCenterOfMassDrawing()" type="number" id="carLengthInput" min="0.0" value=""><br>
@@ -105,9 +110,13 @@ x
                 <button onclick="save()" id="saveButt">Saglabāt</button>
                 <br>
 
+
             </div>
         
  
+        </div>
+        <div id="braucienaDati">
+            
         </div>
     
 
@@ -120,6 +129,9 @@ x
         <script>
             changeThingToDo();
             drawTrack();
+            checkForLocaldata();
+            changeCarOptionList();
+            change()
         </script>
         
     </body>

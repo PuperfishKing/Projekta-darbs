@@ -4,7 +4,7 @@
 let x = 5
 
 let canChangeData =false
-let hpUZzs = 0.75
+
 ctx.font = "60px serif";
 
 ctx.fillStyle="green";
