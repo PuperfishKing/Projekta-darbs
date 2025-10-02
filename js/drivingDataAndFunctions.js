@@ -14,9 +14,6 @@ function changeSpeed(to,from,value){
     else return value
 }
 
-function getAcceliration(from){
-    
-}
 
 function calculateOptimalSpeed(){
     let currentFriction = lietusJautajums.value*lietusJautajums.value
@@ -57,7 +54,6 @@ function drawDrivingLine(){
 
 
     //dzeltena krāsa
-
 }
 function drawTest(){
     ctx.beginPath();
