@@ -118,3 +118,45 @@ function drawDrivingLine(){
     //dzeltena krāsa
 
 }
+
+function drawCheckPoints( ){   // secība ir no beigām uz sākumu
+    ctx.beginPath();
+    ctx.arc(795, 160, 2, 0, 2 * Math.PI);             //beigu punkts
+    ctx.stroke();  
+
+    ctx.moveTo(200, 20);
+    ctx.lineTo(200, 180);                      //pēdējā līnija
+    ctx.stroke();
+
+    ctx.moveTo(135, 35);
+    ctx.lineTo(195, 180);
+    ctx.stroke();
+
+    ctx.moveTo(80, 65);
+    ctx.lineTo(190, 185);
+    ctx.stroke();
+
+    ctx.moveTo(35, 130);
+    ctx.lineTo(185, 190);
+    ctx.stroke();
+
+    ctx.moveTo(20, 200);
+    ctx.lineTo(180, 200);
+    ctx.stroke();
+
+    ctx.moveTo(40, 280);
+    ctx.lineTo(185, 215);
+    ctx.stroke();
+
+
+    ctx.moveTo(125, 420);
+    ctx.lineTo(255, 320);
+    ctx.stroke();
+
+
+
+    ctx.moveTo(240, 610);
+    ctx.lineTo(370, 500);
+    ctx.stroke();
+ 
+}

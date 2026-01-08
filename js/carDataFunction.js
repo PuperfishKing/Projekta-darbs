@@ -13,7 +13,7 @@ function change(){
         knownCarPower.innerHTML = changeEngValues("kw",knownEngValueChoise.value, preSetCarDAta[carDataChoise.value].power)
         knownCarWitdh.innerHTML = preSetCarDAta[carDataChoise.value].witdh
         //knownCarPowerOutput.innerHTML = preSetCarDAta[carDataChoise.value].powerOutput
-        knownCarFuelType.innerHTML=preSetCarDAta[carDataChoise.value].fuelType
+        //knownCarFuelType.innerHTML=preSetCarDAta[carDataChoise.value].fuelType
         //console.log(preSetCarDAta[carDataChoise.value].power)
     }
 }

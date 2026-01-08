@@ -10,7 +10,7 @@ ctx.font = "60px serif";
 ctx.fillStyle="green";
 
 
-let proportion = 0.0025 // 1 pix ir 0,0025 m , 10000/400
+
 
 
 
@@ -38,14 +38,14 @@ function checkEngineMesurment(){
 //     }
 // }
 
-function calculateCenterOfMass(carChoise){
-    let curentCar = preSetCarDAta[carChoise]
-    curentCar.centerOfMassX = (curentCar.length*(curentCar.mass-curentCar.engineMass) + curentCar.enginePozX*curentCar.engineMass)/curentCar.mass
-    curentCar.centerOfMassX = (curentCar.centerOfMassX).toFixed(3)
+// function calculateCenterOfMass(carChoise){
+//     let curentCar = preSetCarDAta[carChoise]
+//     curentCar.centerOfMassX = (curentCar.length*(curentCar.mass-curentCar.engineMass) + curentCar.enginePozX*curentCar.engineMass)/curentCar.mass
+//     curentCar.centerOfMassX = (curentCar.centerOfMassX).toFixed(3)
 
-    curentCar.centerOfMassY = (curentCar.witdh*(curentCar.mass-curentCar.engineMass) + curentCar.enginePozY*curentCar.engineMass)/curentCar.mass
-    curentCar.centerOfMassY = (curentCar.centerOfMassX).toFixed(3)
-}
+//     curentCar.centerOfMassY = (curentCar.witdh*(curentCar.mass-curentCar.engineMass) + curentCar.enginePozY*curentCar.engineMass)/curentCar.mass
+//     curentCar.centerOfMassY = (curentCar.centerOfMassX).toFixed(3)
+// }
 
 // var preSetCarDAta={
 //     vwGolf3 : new carDataTemplate(2.471 ,4.071 ,1009 ,110 ,0 ,0,0),

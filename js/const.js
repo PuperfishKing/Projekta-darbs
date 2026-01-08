@@ -33,14 +33,20 @@ const tirePressure = document.getElementById("tirePressure")
 const tirePressureMesurment = document.getElementById("tirePressureMesurment")
 const  startSpeed = document.getElementById("startSpeed")
 
-const track_witdh=10 //metri
+const tripData=document.getElementById("tripData")
+const usedCarName=document.getElementById("usedCarName")
+const optimalSpeedData=document.getElementById("optimalSpeedData")
+const tipTextPlace=document.getElementById("tipTextPlace")
+
+const trackWitdh=10 //metri
 const cornerWitdh =10 // metri
 let optimalSpeed //m/s
 const g=9.81
+const pixToM = 17 // 17 pixeļi ir apmeram 1 metrs
 let currentSpeed
 let testX =40 
 let testY =0
-let hpUZzs = 0.75
+
 
 class carDataTemplate {
     constructor(name,witdh,length,mass,power,powerOutput,breakCoificient, centerOfMassX,centerOfMassY,engineMass,enginePozX, enginePozY){
@@ -59,6 +65,30 @@ class carDataTemplate {
 
     }
 }
+
+class dataEntry {
+    constructor(time, xPoz, yPoz,speed,currentPoint,previousPoints){
+        this.time = time
+        this.xPoz = xPoz
+        this.yPoz = yPoz
+        this.speed=speed
+        this.currentPoint = currentPoint
+        this.previousPoints = []
+    }
+}
+
+let lines=[                     // 8 "līnijas" pa kurām meklēs labākos "punktus"
+    [240,610,370,500],          // x1,y1,x2,y2
+    [125, 420, 255, 320],       // x1,y1,x2,y2
+    [40 ,280, 185 ,215],        // x1,y1,x2,y2
+    [20, 200, 180, 200],        // x1,y1,x2,y2
+    [ 350,  130, 185, 190],     // x1,y1,x2,y2
+    [80, 65, 190, 185 ],        // x1,y1,x2,y2
+    [132, 35, 195, 180],        // x1,y1,x2,y2
+    [200, 20, 200, 180],        // x1,y1,x2,y2
+]
+
+const end= [800,160]            //x,y - beigu punkts
 
 
 var preSetCarDAta={

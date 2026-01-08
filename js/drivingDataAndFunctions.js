@@ -48,7 +48,7 @@ function changePressureMesurments(value,from,to){
 
 
 function drawDrivingLine(){
-    if(checkForAllValues()){
+    if(true){
         calculateOptimalSpeed()
        
         drawCarPosision()
@@ -75,10 +75,12 @@ function drawDrivingLine(){
         }
         else {
             console.log("ok ātrums")
+
         }
         ctx.beginPath();
         ctx.moveTo(135,435);
-        ctx.quadraticCurveTo(testX, testY, 800,100);
+        ctx.moveTo(testX, testY);
+        ctx.moveTo(800, 100);
         ctx.stroke();
 
 
@@ -86,10 +88,64 @@ function drawDrivingLine(){
     }
 }
 
+
+
 function drawTest(){
     ctx.beginPath();
     ctx.moveTo(135,435);
     ctx.quadraticCurveTo(testX, testY, 800,100);
     ctx.stroke();
+
+}
+
+
+
+function pointCalculation(mass,power, startSpeed){
+    let pointKeeper = [new dataEntry(0,300+190*(rangeBar.value/100),695,startSpeed.value,-1)]; // laiks starp posmiem un ir ielikts sakuma punkts ar sakuma parametriem
+    let finalTimes = [];  // beigu laiki
+
+    while(pointKeeper.length>0) {
+        let now=pointKeeper[0]
+        pointKeeper.shift();
+        if(now.currentPoint<7){
+            for(let i =0; i <5; i++){
+
+                let nextXPoz = Math.max(lines[now.currentPoint+1][0], lines[now.currentPoint+1][2])-Math.min(lines[now.currentPoint+1][0], lines[now.currentPoint+1][2])*i/5
+                let nextyPoz = Math.max(lines[now.currentPoint+1][1], lines[now.currentPoint+1][3])-Math.min(lines[now.currentPoint+1][1], lines[now.currentPoint+1][3])*i/5
+
+                let l = Math.sqrt(( now.xPoz - nextXPoz)^2 + ( now.YPoz - nextyPoz)        )
+                let a=0
+                if (now.speed < optimalSpeed) a = power/(now.speed*mass)
+                else if (now.speed > optimalSpeed) a = power/(now.speed*mass)        //  jādabūn bremzēšajas spēks
+                let time1 = now.time + (now.speed*-1 +Math.sqrt(now.speed^2 + 2*a*l))/a
+                let time2 = now.time - (now.speed*-1 -Math.sqrt(now.speed^2 + 2*a*l))/a
+                let time = Math.max(time1, time2);
+                let newSpeed = now.speed+ a*time
+                let newArray = now.previousPoints
+                newArray.push(i)
+                pointKeeper.push(new dataEntry(time,nextXPoz, nextyPoz,newSpeed,now.currentPoint+1),newArray);
+            }
+        }
+        else {
+            if(finalTimes.length()==1){
+                if(finalTimes[0].time <now.time){
+                    finalTimes.push(now)
+                }
+                else {
+                    finalTimes.unshift(now)
+                }
+            }
+            else if(finalTimes.length()>2){
+                for(let i=0; i < finalTimes.length();i++){
+                    if(finalTimes[i].time > now.time){
+                        finalTimes.splice(i,0,now)
+                        break
+                    }
+                }
+            }
+
+            else finalTimes.push(now)   // vajag uztaisīt lai sakārto pēc lbākajiem laikiem;
+        }
+    }
 
 }
