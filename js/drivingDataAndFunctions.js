@@ -48,7 +48,7 @@ function changePressureMesurments(value,from,to){
 
 
 function drawDrivingLine(){
-    if(true){
+    if(haveChosenCar&& startSpeed.value>=0 && tirePressure>=0){
         calculateOptimalSpeed()
        
         drawCarPosision()
@@ -85,7 +85,10 @@ function drawDrivingLine(){
 
 
         //dzeltena krāsa
+
+        pointCalculation(preSetCarDAta[chosenCar].mass,preSetCarDAta[chosenCar].power, startSpeed)
     }
+    drawCheckPoints()
 }
 
 
@@ -102,32 +105,41 @@ function drawTest(){
 
 function pointCalculation(mass,power, startSpeed){
     let pointKeeper = [new dataEntry(0,300+190*(rangeBar.value/100),695,startSpeed.value,-1)]; // laiks starp posmiem un ir ielikts sakuma punkts ar sakuma parametriem
-    let finalTimes = [];  // beigu laiki
+     finalTimes = [];  // beigu laiki
 
     while(pointKeeper.length>0) {
         let now=pointKeeper[0]
         pointKeeper.shift();
         if(now.currentPoint<7){
             for(let i =0; i <5; i++){
-
+                let time1
+                let time2
                 let nextXPoz = Math.max(lines[now.currentPoint+1][0], lines[now.currentPoint+1][2])-Math.min(lines[now.currentPoint+1][0], lines[now.currentPoint+1][2])*i/5
                 let nextyPoz = Math.max(lines[now.currentPoint+1][1], lines[now.currentPoint+1][3])-Math.min(lines[now.currentPoint+1][1], lines[now.currentPoint+1][3])*i/5
 
-                let l = Math.sqrt(( now.xPoz - nextXPoz)^2 + ( now.YPoz - nextyPoz)        )
+                let l = Math.sqrt(( now.xPoz - nextXPoz)**2 + ( now.YPoz - nextyPoz)**2        )
                 let a=0
-                if (now.speed < optimalSpeed) a = power/(now.speed*mass)
-                else if (now.speed > optimalSpeed) a = power/(now.speed*mass)        //  jādabūn bremzēšajas spēks
-                let time1 = now.time + (now.speed*-1 +Math.sqrt(now.speed^2 + 2*a*l))/a
-                let time2 = now.time - (now.speed*-1 -Math.sqrt(now.speed^2 + 2*a*l))/a
+                if (now.speed < optimalSpeed-3) a = power/(now.speed*mass)
+                else if (now.speed > optimalSpeed+3) a = brakeOption.value * lietusJautajums.value* riepas.value      //  jādabūn bremzēšajas spēks
+                if(a!=0){
+                    time1 = now.time + (now.speed*-1 +Math.sqrt(now.speed**2 + 2*a*l))/a
+                    time2 = now.time - (now.speed*-1 -Math.sqrt(now.speed**2 + 2*a*l))/a
+                }
+                else {
+                    time1 = now.time + l/now.speed
+                    time2 = now.time - l/now.speed
+                }
                 let time = Math.max(time1, time2);
-                let newSpeed = now.speed+ a*time
+                let deltaT = time - now.time;
+                let newSpeed = now.speed + a * deltaT;
+                
                 let newArray = now.previousPoints
                 newArray.push(i)
                 pointKeeper.push(new dataEntry(time,nextXPoz, nextyPoz,newSpeed,now.currentPoint+1),newArray);
             }
         }
         else {
-            if(finalTimes.length()==1){
+            if(finalTimes.length==1){
                 if(finalTimes[0].time <now.time){
                     finalTimes.push(now)
                 }
@@ -135,8 +147,8 @@ function pointCalculation(mass,power, startSpeed){
                     finalTimes.unshift(now)
                 }
             }
-            else if(finalTimes.length()>2){
-                for(let i=0; i < finalTimes.length();i++){
+            else if(finalTimes.length>2){
+                for(let i=0; i < finalTimes.length ;i++){
                     if(finalTimes[i].time > now.time){
                         finalTimes.splice(i,0,now)
                         break
@@ -147,5 +159,5 @@ function pointCalculation(mass,power, startSpeed){
             else finalTimes.push(now)   // vajag uztaisīt lai sakārto pēc lbākajiem laikiem;
         }
     }
-
+    console.log(finalTimes[0])
 }

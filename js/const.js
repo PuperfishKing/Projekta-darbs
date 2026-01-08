@@ -88,6 +88,8 @@ let lines=[                     // 8 "līnijas" pa kurām meklēs labākos "punk
     [200, 20, 200, 180],        // x1,y1,x2,y2
 ]
 
+ let finalTimes = []
+
 const end= [800,160]            //x,y - beigu punkts
 
 
